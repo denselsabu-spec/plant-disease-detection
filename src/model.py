@@ -17,7 +17,7 @@ class PlantDiseaseCNN(nn.Module):
 
             ),
             nn.ReLU(),
-            n.MaxPool2d(kernel_size=2,stride=2),
+            nn.MaxPool2d(kernel_size=2,stride=2),
 
             #convo Block 2
             nn.Convo2d(
