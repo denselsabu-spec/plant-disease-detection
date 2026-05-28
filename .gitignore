@@ -1,5 +1,31 @@
+```gitignore
+# Virtual Environment
 venv/
+
+# Python Cache
 __pycache__/
+*.py[cod]
+
+# Jupyter
 .ipynb_checkpoints/
+
+# macOS
 .DS_Store
+
+# Dataset
 data/
+
+# PyTorch Model Weights
+*.pth
+*.pt
+
+# Training Outputs
+*.png
+
+# IDE Files
+.vscode/
+.idea/
+
+# Environment Variables
+.env
+```

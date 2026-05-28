@@ -12,7 +12,7 @@ class PlantDiseaseCNN(nn.Module):
             nn.Conv2d(
                 in_channels=3,
                 out_channels=32,
-                kernels_size=3,
+                kernel_size=3,
                 padding=1
 
             ),
@@ -20,7 +20,7 @@ class PlantDiseaseCNN(nn.Module):
             nn.MaxPool2d(kernel_size=2,stride=2),
 
             #convo Block 2
-            nn.Convo2d(
+            nn.Conv2d(
                 in_channels=32,
                 out_channels=64,
                 kernel_size=3,
@@ -40,7 +40,7 @@ class PlantDiseaseCNN(nn.Module):
             nn.MaxPool2d(kernel_size=2,stride=2)
         )
 
-        self.classifier = nn.Sequentual(
+        self.classifier = nn.Sequential(
             nn.Flatten(),
 
             nn.Linear(128*28*28,512),
