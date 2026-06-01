@@ -12,11 +12,14 @@ transform = transforms.Compose([transforms.Resize((224,224)),
                                 ),
                                 transforms.ToTensor()])
 
+
+val_transform = transforms.Compose([transforms.Resize((224,224)),
+                                   transforms.ToTensor()])
 #load training dataset
 train_dataset = datasets.ImageFolder(root='data/train', transform=transform)
 
 #load validation dataset
-val_dataset = datasets.ImageFolder(root='data/val',transform=transform)
+val_dataset = datasets.ImageFolder(root='data/val',transform=val_transform)
 
 #create dataloaders
 train_loader = DataLoader(train_dataset,batch_size=32,shuffle=True)
