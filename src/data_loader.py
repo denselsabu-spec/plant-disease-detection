@@ -2,7 +2,15 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
 #image preprocessing transforms
-transform = transforms.Compose([transforms.Resize((224,224)),transforms.ToTensor()])
+transform = transforms.Compose([transforms.Resize((224,224)),
+                                transforms.RandomHorizontalFlip(),
+                                transforms.RandomRotation(15),
+                                transforms.ColorJitter(
+                                    brightness=0.2,
+                                    contrast=0.2,
+                                    saturation=0.2
+                                ),
+                                transforms.ToTensor()])
 
 #load training dataset
 train_dataset = datasets.ImageFolder(root='data/train', transform=transform)
