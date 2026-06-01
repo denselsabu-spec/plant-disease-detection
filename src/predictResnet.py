@@ -65,7 +65,14 @@ with torch.no_grad():
     probabilisties = torch.softmax(outputs,dim=1)
 
     confidence,predicted = torch.max(probabilisties,1)
+    top_probs, top_indices = torch.topk(probabilisties,5)
 
+print("\nTop 5 Predictions:")
+for prob, idx in zip(top_probs[0], top_indices[0]):
+    print(
+        f"{classes[idx.item()]}: "
+        f"{prob.item()*100:.2f}"
+    )
 predicted_class = classes[predicted.item()]
 
 print(f"\nPredicted Class: {predicted_class}")

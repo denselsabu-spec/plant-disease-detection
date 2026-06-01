@@ -27,7 +27,10 @@ criterion = nn.CrossEntropyLoss()
 
 #optimizer
 optimizer = optim.Adam(
-    model.fc.parameters(),
+    filter(
+        lambda p: p.requires_grad,
+        model.parameters()
+    ),
     lr=0.001
 )
 
@@ -40,6 +43,8 @@ val_accuracies = []
 
 #number of epochs
 num_epochs = 15
+#track best validation loss
+best_val_loss = float("inf")
 
 for epoch in range(num_epochs):
 
@@ -132,6 +137,23 @@ for epoch in range(num_epochs):
 
     val_accuracies.append(epoch_val_accuracy)
 
+
+    #save the best model
+    if epoch_val_loss<best_val_loss:
+
+        best_val_loss = epoch_val_loss
+
+        torch.save(
+            model.state_dict(),
+            "models/plants_disease_resnet_best.pth"
+        )
+        
+        print(
+            f"Best model saved! "
+            f"(Val Loss: {epoch_val_loss:.4f})"
+        )
+
+
     #print metrics
     print(
         f"Epoch [{epoch+1}/{num_epochs}] "
@@ -173,7 +195,7 @@ plt.savefig("training_accuracy_resnet.png")
 
 print("Accuracy curve saved")
 
-#save model weights
+#save best epoch model weights
 torch.save(
     model.state_dict(),
     "models/plants_disease_resnet.pth"
@@ -181,3 +203,4 @@ torch.save(
 
 print("Model weights saved")
 
+print(f"Best Validation Loss: {best_val_loss:.4f}")
