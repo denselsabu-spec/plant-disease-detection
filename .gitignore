@@ -1,6 +1,6 @@
-```gitignore
 # Virtual Environment
 venv/
+.venv/
 
 # Python Cache
 __pycache__/
@@ -28,4 +28,21 @@ data/
 
 # Environment Variables
 .env
-```
+
+# Logs
+*.log
+
+# Pytest
+.pytest_cache/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Docker
+*.tar

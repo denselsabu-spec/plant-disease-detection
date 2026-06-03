@@ -2,7 +2,7 @@ import torch
 from PIL import Image
 from torchvision import transforms
 
-from model import model
+from src.model1 import PlantDiseaseCNN
 from data_loader import train_dataset
 
 #Device
