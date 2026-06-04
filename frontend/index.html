@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Tells the browser this is an HTML5 document -->
+
+<html lang="en">
+<head>
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Makes website responsive on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Browser tab title -->
+    <title>Plant Disease Detection</title>
+
+    <!-- Link external CSS file -->
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+
+    <!-- Decorative background -->
+    <div class="background"></div>
+
+    <!-- Main card containing the application -->
+    <div class="card">
+
+        <!-- Main heading -->
+        <h1>🌿 Plant Disease Detection</h1>
+
+        <!-- Small description -->
+        <p class="subtitle">
+            Upload a leaf image and let AI identify the disease.
+        </p>
+
+        <!-- File upload section -->
+        <div class="upload-area">
+
+            <!-- Hidden file input -->
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*">
+
+            <!-- Custom upload button -->
+            <label for="imageInput">
+                📸 Choose Leaf Image
+            </label>
+
+        </div>
+
+        <!-- Image preview section -->
+        <div class="preview-container">
+
+            <!-- Selected image will appear here -->
+            <img id="preview">
+
+        </div>
+
+        <!-- Button that runs predictDisease() -->
+        <button
+            id="predictBtn"
+            onclick="predictDisease()">
+
+            Predict Disease
+
+        </button>
+
+        <!-- Loading spinner -->
+        <div
+            class="loader"
+            id="loader">
+        </div>
+
+        <!-- Prediction result card -->
+        <div
+            id="resultCard"
+            class="result-card">
+
+            <h2>Prediction</h2>
+
+            <!-- Prediction text goes here -->
+            <p id="result"></p>
+
+        </div>
+
+    </div>
+
+    <!-- Load JavaScript file -->
+    <script src="/static/script.js"></script>
+
+</body>
+</html>
